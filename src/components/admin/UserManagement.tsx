@@ -12,7 +12,7 @@ import VidhansabhaDropdown from '../common/VidhansabhaDropdown';
 const UserManagement: React.FC = () => {
   const { users: voters, updateUser: updateVoter, addUser: addVoter, deleteUser: deleteVoter, exportData } = useData();
   const { user } = useAuth();
-  const { showSuccess, showError, showWarning } = useToast();
+  const { showSuccess, showError } = useToast();
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingVoter, setEditingVoter] = useState<User | null>(null);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -26,7 +26,7 @@ const UserManagement: React.FC = () => {
     firstName: '',
     lastName: '',
     age: 18,
-    gender: 'MALE',
+    gender: 'MALE' as 'MALE' | 'FEMALE' | 'OTHER',
     vidhansabhaNo: '',
     vibhaghKramank: '',
     amount: 0
@@ -113,7 +113,8 @@ const UserManagement: React.FC = () => {
         ...newVoter,
         paid: false,
         paidDate: null,
-        paidBy: null
+        paidBy: null,
+        createdBy: null
       });
       setNewVoter({
         firstName: '',
@@ -140,11 +141,13 @@ const UserManagement: React.FC = () => {
       setIsSearching(true);
 
       // Call the advanced search API using the service
-      const response = await usersApi.advancedSearch({
+      const searchFilters = {
         ...filters,
+        paid: filters.paid === null ? undefined : filters.paid,
         page: 0,
         size: 100
-      });
+      };
+      const response = await usersApi.advancedSearch(searchFilters);
 
       if (response.success) {
         const voters = response.data.content || [];
@@ -171,7 +174,7 @@ const UserManagement: React.FC = () => {
   const downloadTemplate = async () => {
     try {
       // Call backend API to get Excel template
-      const response = await fetch('http://localhost:8080/api/files/template', {
+      const response = await fetch('http://localhost:8383/api/files/template', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
@@ -216,7 +219,7 @@ const UserManagement: React.FC = () => {
       // Call backend API to create voters
       for (const voter of sampleVoters) {
         try {
-          const response = await fetch('http://localhost:8080/api/users', {
+          const response = await fetch('http://localhost:8383/api/users', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -364,7 +367,7 @@ ${result.errors && result.errors.length > 0 ?
             <Search className="w-4 h-4 mr-2" />
             Advanced Search
           </Button>
-          <Button variant="secondary" onClick={() => exportData('voters')}>
+          <Button variant="secondary" onClick={() => exportData('users')}>
             <Download className="w-4 h-4 mr-2" />
             Export Data (.xlsx)
           </Button>
@@ -418,7 +421,7 @@ ${result.errors && result.errors.length > 0 ?
               <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
               <select
                 value={newVoter.gender}
-                onChange={(e) => setNewVoter({ ...newVoter, gender: e.target.value })}
+                onChange={(e) => setNewVoter({ ...newVoter, gender: e.target.value as 'MALE' | 'FEMALE' | 'OTHER' })}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >

@@ -109,7 +109,7 @@ const UserAgentManagement: React.FC = () => {
         }
       });
 
-      const response = await fetch(`http://localhost:8080/api/users/search/advanced?${params.toString()}`, {
+      const response = await fetch(`http://localhost:8383/api/users/search/advanced?${params.toString()}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
         }
@@ -182,7 +182,7 @@ const UserAgentManagement: React.FC = () => {
             )}
             <Button
               variant="secondary"
-              onClick={() => exportData(viewMode)}
+              onClick={() => exportData(viewMode === 'voters' ? 'users' : 'agents')}
             >
               <Download className="w-4 h-4 mr-2" />
               Export {viewMode === 'voters' ? 'Voters' : 'Agents'} (.xlsx)
@@ -273,7 +273,7 @@ const UserAgentManagement: React.FC = () => {
                 <div className="text-right">
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{count}</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {viewMode === 'users' ? 'users' : 'agents'}
+                    {viewMode === 'voters' ? 'users' : 'agents'}
                   </div>
                 </div>
               </div>
@@ -285,7 +285,7 @@ const UserAgentManagement: React.FC = () => {
           <div className="text-center py-8 text-gray-500 dark:text-gray-400">
             <div className="text-lg font-medium">No {viewMode} found</div>
             <div className="text-sm">
-              {viewMode === 'users'
+              {viewMode === 'voters'
                 ? 'No users have been created by agents yet'
                 : 'No agents have been created by sub-admins yet'
               }

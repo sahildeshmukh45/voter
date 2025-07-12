@@ -39,7 +39,7 @@ const AdminDashboard: React.FC = () => {
 
   // Calculate stats
   const paidVoters = users.filter(u => u.paid).length;
-  const totalAmount = users.filter(u => u.paid).reduce((sum, u) => sum + u.amount, 0);
+  const totalAmount = users.filter(u => u.paid).reduce((sum, u) => sum + (u.amount || 0), 0);
   const activeAgents = agents.filter(a => a.status === 'active').length;
 
   const sidebarItems = [

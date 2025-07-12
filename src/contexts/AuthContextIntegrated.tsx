@@ -64,26 +64,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const login = async (username: string, password: string, role: UserRole): Promise<boolean> => {
+  const login = async (username: string, password: string): Promise<{ success: boolean; error?: string }> => {
     try {
       setLoading(true);
       const response = await authApi.login(username, password);
       
       if (response.success) {
         const authUser: AuthUser = {
-          username: response.data.user.username,
-          role: mapBackendRoleToFrontend(response.data.user.role),
-          name: `${response.data.user.firstName} ${response.data.user.lastName}`
+          username: (response.data as any).user?.username || response.data.username || username,
+          role: mapBackendRoleToFrontend((response.data as any).user?.role || response.data.role),
+          name: (response.data as any).user?.firstName && (response.data as any).user?.lastName
+            ? `${(response.data as any).user.firstName} ${(response.data as any).user.lastName}`
+            : response.data.username || username
         };
-        
+
         setUser(authUser);
-        return true;
+        return { success: true };
       } else {
-        return false;
+        return { success: false, error: 'Invalid credentials' };
       }
     } catch (error) {
       console.error('Login error:', error);
-      return false;
+      return { success: false, error: 'Login failed. Please try again.' };
     } finally {
       setLoading(false);
     }

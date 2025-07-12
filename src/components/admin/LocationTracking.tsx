@@ -10,7 +10,7 @@ import { MapPin, Clock, RefreshCw, Users, Activity, Wifi, WifiOff, Map } from 'l
 const locationApi = {
   getAllAgentLocations: async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/location/agents', {
+      const response = await fetch('http://localhost:8383/api/location/agents', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
         }
@@ -28,7 +28,8 @@ const LocationTracking: React.FC = () => {
   const [liveLocations, setLiveLocations] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [wsConnected, setWsConnected] = useState(false);
-  const [locationWebSocket, setLocationWebSocket] = useState<LocationWebSocket | null>(null);
+
+
   const [showMap, setShowMap] = useState(true);
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>('');
   const [mapsConfigLoaded, setMapsConfigLoaded] = useState(false);
@@ -86,7 +87,7 @@ const LocationTracking: React.FC = () => {
 
   const fetchGoogleMapsConfig = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/config/google-maps-key', {
+      const response = await fetch('http://localhost:8383/api/config/google-maps-key', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
         }
@@ -106,7 +107,6 @@ const LocationTracking: React.FC = () => {
   // Initialize WebSocket connection for real-time updates
   useEffect(() => {
     const ws = new LocationWebSocket();
-    setLocationWebSocket(ws);
 
     // Connect WebSocket with event handlers
     ws.connect(
@@ -230,7 +230,7 @@ const LocationTracking: React.FC = () => {
                   </div>
                   <div className="text-sm text-blue-700">Currently online and tracking</div>
                   <div className="text-xs text-blue-600">
-                    Total agents: {agents.filter(agent => agent.status === 'ACTIVE').length}
+                    Total agents: {agents.filter(agent => agent.status === 'active').length}
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Users } from 'lucide-react';
-import { Card, Input, Button } from '../ui';
+import { Card, Input } from '../ui';
 
 interface Vidhansabha {
   vidhansabhaNo: number;
@@ -38,7 +38,7 @@ const VidhansabhaLookup: React.FC<VidhansabhaLookupProps> = ({
   const searchVidhansabha = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`http://localhost:8080/api/vidhansabha/search?term=${encodeURIComponent(searchTerm)}`, {
+      const response = await fetch(`http://localhost:8383/api/vidhansabha/search?term=${encodeURIComponent(searchTerm)}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`,
           'Content-Type': 'application/json'

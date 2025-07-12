@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import type { UserRole } from '../../types';
+
 import LanguageSelector from '../ui/LanguageSelector';
-import { Eye, EyeOff, Lock, Phone, Building2, Vote, Sun, Moon } from 'lucide-react';
+import { Eye, EyeOff, Lock, Phone, Vote, Sun, Moon } from 'lucide-react';
 
 const LoginScreen: React.FC = () => {
   const { login } = useAuth();
@@ -24,7 +24,7 @@ const LoginScreen: React.FC = () => {
 
     try {
       console.log('LoginScreen: Attempting login with mobile:', mobile);
-      const result = await login(mobile, password, 'admin'); // Role will be determined by backend
+      const result = await login(mobile, password); // Role will be determined by backend
 
       if (!result.success) {
         setError(result.error || t.auth.invalidCredentials);

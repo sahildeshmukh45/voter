@@ -4,12 +4,13 @@ import { useToast } from '../common/Toast';
 import { Table, Button, StatusBadge, Modal, Input, Card } from '../ui';
 import { agentsApi } from '../../services/api';
 import type { TableColumn, Agent } from '../../types';
-import { Plus, Edit, Trash2, Shield, ShieldOff, Activity, Eye, MapPin } from 'lucide-react';
+import { Plus, Edit, Trash2, Shield, ShieldOff, Activity, Eye } from 'lucide-react';
 
 const AgentManagement: React.FC = () => {
   const { agents, transactions, deleteAgent, blockAgent, unblockAgent } = useData();
   const { showSuccess, showError, showInfo } = useToast();
-  const [showAddModal, setShowAddModal] = useState(false);
+
+
   const [editingAgent, setEditingAgent] = useState<Agent | null>(null);
   const [editPassword, setEditPassword] = useState('');
   const [newAgent, setNewAgent] = useState({
@@ -111,7 +112,7 @@ const AgentManagement: React.FC = () => {
           </Button>
 
           {/* Block/Unblock Button */}
-          {agent.status === 'ACTIVE' ? (
+          {agent.status === 'active' ? (
             <Button
               variant="warning"
               size="sm"
@@ -158,7 +159,7 @@ const AgentManagement: React.FC = () => {
           password: ''
         });
 
-        setShowAddModal(false);
+        // Agent created successfully
 
       } catch (error) {
         console.error('Error creating agent:', error);
@@ -223,10 +224,15 @@ const AgentManagement: React.FC = () => {
 
   const viewAgentActivity = (agentId: string) => {
     const agent = agents.find(a => a.id === agentId);
-    const agentTransactions = transactions.filter(t => t.agent.includes(agent?.username || agentId));
+    const agentTransactions = transactions.filter(t =>
+      (t.agent && t.agent.includes(agent?.username || agentId)) ||
+      t.agentId === agentId
+    );
 
     const message = agentTransactions.length > 0 ?
-      `Recent transactions:\n${agentTransactions.slice(-5).map(t => `${t.timestamp}: ${t.user}`).join('\n')}` :
+      `Recent transactions:\n${agentTransactions.slice(-5).map(t =>
+        `${t.timestamp || new Date(t.createdAt).toLocaleString()}: ${t.user || `User ${t.userId}`}`
+      ).join('\n')}` :
       'No transactions found for this agent.';
 
     showInfo('Agent Activity', message);
@@ -237,10 +243,7 @@ const AgentManagement: React.FC = () => {
     setViewingAgent(agent);
   };
 
-  const handleViewLocation = (agent: Agent) => {
-    // TODO: Implement location view modal or redirect to location page
-    alert(`Viewing location for ${agent.firstName} ${agent.lastName}\nLast Location: ${agent.lastLocation || 'Unknown'}`);
-  };
+
 
   const handleBlockAgent = async (agentId: string) => {
     try {
@@ -430,7 +433,7 @@ const AgentManagement: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
-                <p className="text-gray-900">{viewingAgent.username}</p>
+                <p className="text-gray-900">{viewingAgent.username || viewingAgent.mobile}</p>
               </div>
             </div>
 

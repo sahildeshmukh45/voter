@@ -47,14 +47,16 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [locationHistory, setLocationHistory] = useState<LocationHistory[]>([]);
   const [loginLogs, setLoginLogs] = useState<LoginLog[]>([]);
+  const [blockedAgents] = useState<Set<string>>(new Set());
   const [systemSettings, setSystemSettings] = useState<SystemSettings>({
+    defaultPaymentAmount: 5000,
+    sessionTimeout: 3600000,
     trackingInterval: 5000,
     offlineThreshold: 15000,
     maxFileSize: 10485760,
     supportedFormats: ['csv', 'xlsx', 'pdf'],
     emailNotifications: true,
-    autoBackup: true,
-    sessionTimeout: 3600000
+    autoBackup: true
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -292,9 +294,11 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
           userId,
           agentId: agentUsername,
           amount,
-          status: 'completed',
-          timestamp: new Date().toISOString(),
-          location
+          status: 'COMPLETED',
+          createdAt: new Date().toISOString(),
+          location,
+          // Legacy properties for backward compatibility
+          timestamp: new Date().toISOString()
         };
         setTransactions(prev => [transaction, ...prev]);
       }
@@ -355,6 +359,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     transactions,
     locationHistory,
     loginLogs,
+    blockedAgents,
     systemSettings,
     loading,
     error,

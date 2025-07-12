@@ -1,7 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import type { TableProps, TableColumn } from '../../types';
 import { Search, ChevronUp, ChevronDown } from 'lucide-react';
-import { useTheme } from '../../contexts/ThemeContext';
+
 
 function Table<T extends Record<string, any>>({ 
   data, 
@@ -10,7 +10,7 @@ function Table<T extends Record<string, any>>({
   searchPlaceholder = "Search...",
   onSearch 
 }: TableProps<T>) {
-  const { isDark } = useTheme();
+
   const [searchQuery, setSearchQuery] = useState('');
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');

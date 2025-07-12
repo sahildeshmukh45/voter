@@ -56,14 +56,16 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [locationHistory, setLocationHistory] = useState<LocationHistory[]>([]);
   const [loginLogs, setLoginLogs] = useState<LoginLog[]>([]);
+  const [blockedAgents, setBlockedAgents] = useState<Set<string>>(new Set());
   const [systemSettings, setSystemSettings] = useState<SystemSettings>({
+    defaultPaymentAmount: 5000,
+    sessionTimeout: 3600000,
     trackingInterval: 5000,
     offlineThreshold: 15000,
     maxFileSize: 10485760,
     supportedFormats: ['xlsx', 'csv', 'pdf'],
     emailNotifications: true,
-    autoBackup: true,
-    sessionTimeout: 3600000
+    autoBackup: true
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -82,6 +84,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       setTransactions([]);
       setLocationHistory([]);
       setLoginLogs([]);
+      setBlockedAgents(new Set());
       setLoading(false);
     }
 
@@ -253,8 +256,9 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       const response = await agentsApi.block(agentId);
       if (response.success) {
         setAgents(prev => prev.map(agent =>
-          agent.id === agentId ? { ...agent, status: 'BLOCKED' } : agent
+          agent.id === agentId ? { ...agent, status: 'blocked' } : agent
         ));
+        setBlockedAgents(prev => new Set([...prev, agentId]));
       }
     } catch (error) {
       console.error('Error blocking agent:', error);
@@ -267,8 +271,13 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       const response = await agentsApi.unblock(agentId);
       if (response.success) {
         setAgents(prev => prev.map(agent =>
-          agent.id === agentId ? { ...agent, status: 'ACTIVE' } : agent
+          agent.id === agentId ? { ...agent, status: 'active' } : agent
         ));
+        setBlockedAgents(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(agentId);
+          return newSet;
+        });
       }
     } catch (error) {
       console.error('Error unblocking agent:', error);
@@ -319,7 +328,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       const response = await adminsApi.block(adminId);
       if (response.success) {
         setAdministrators(prev => prev.map(admin =>
-          admin.id === adminId ? { ...admin, status: 'BLOCKED' } : admin
+          admin.id === adminId ? { ...admin, status: 'blocked' } : admin
         ));
       }
     } catch (error) {
@@ -333,7 +342,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       const response = await adminsApi.unblock(adminId);
       if (response.success) {
         setAdministrators(prev => prev.map(admin =>
-          admin.id === adminId ? { ...admin, status: 'ACTIVE' } : admin
+          admin.id === adminId ? { ...admin, status: 'active' } : admin
         ));
       }
     } catch (error) {
@@ -354,10 +363,15 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
         const transaction: Transaction = {
           id: `TXN-${Date.now()}`,
+          userId: userId,
+          agentId: agentUsername,
+          amount: amount,
+          location,
+          status: 'COMPLETED',
+          createdAt: new Date().toISOString(),
+          // Legacy properties for backward compatibility
           user: `User ${userId}`,
           agent: agentUsername,
-          amount: amount.toString(),
-          location,
           timestamp: new Date().toISOString()
         };
         setTransactions(prev => [transaction, ...prev]);
@@ -432,6 +446,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     transactions,
     locationHistory,
     loginLogs,
+    blockedAgents,
     systemSettings,
     loading,
     error,

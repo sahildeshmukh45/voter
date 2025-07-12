@@ -5,7 +5,7 @@ import type { TableColumn, Transaction } from '../../types';
 import { Download, Trash2, AlertTriangle, Database, FileText } from 'lucide-react';
 
 const DataManagement: React.FC = () => {
-  const { transactions, exportData, clearAllData, loading } = useData();
+  const { transactions, exportData, loading } = useData();
 
   const columns: TableColumn<Transaction>[] = [
     {
@@ -64,8 +64,8 @@ const DataManagement: React.FC = () => {
     if (confirmed) {
       const doubleConfirm = confirm('This is your final warning. All data will be lost forever. Continue?');
       if (doubleConfirm) {
-        clearAllData();
-        alert('All data has been wiped!');
+        // Note: clearAllData functionality not implemented
+        alert('Clear all data functionality is not available in this version.');
       }
     }
   };

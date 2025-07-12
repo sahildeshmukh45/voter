@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 interface Props {
@@ -12,7 +12,7 @@ interface State {
   errorInfo?: ErrorInfo;
 }
 
-class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> { 
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
@@ -49,16 +49,16 @@ class ErrorBoundary extends Component<Props, State> {
             </div>
             
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Something went wrong
+              Something went wrong 
             </h2>
             
             <p className="text-gray-600 mb-6">
               We're sorry, but something unexpected happened. Please try refreshing the page or go back to the home page.
-            </p>
+            </p>   
 
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {process.env.NODE_ENV === 'development' && this.state.  error && (
               <div className="mb-6 p-4 bg-gray-100 rounded-lg text-left">
-                <h3 className="font-semibold text-sm text-gray-700 mb-2">Error Details:</h3>
+                <h3 className="font-semibold text-sm text-gray-700 mb-2">Error Details:</h3> 
                 <pre className="text-xs text-gray-600 overflow-auto max-h-32">
                   {this.state.error.toString()}
                 </pre>

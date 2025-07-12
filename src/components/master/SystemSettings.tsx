@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../../contexts/DataContext';
-import { useLanguage } from '../../contexts/LanguageContext';
-import { useTheme } from '../../contexts/ThemeContext';
+
 import { Card, Button, Input } from '../ui';
 import { Settings, Save, RefreshCw, Shield, Database } from 'lucide-react';
 

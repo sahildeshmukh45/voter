@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, X } from 'lucide-react';
 import { Modal, Input, Button } from '../ui';
-import { User } from '../../types';
+
 import VidhansabhaDropdown from '../common/VidhansabhaDropdown';
 
 interface AdvancedSearchModalProps {
@@ -53,7 +53,6 @@ export const AdvancedSearchModal: React.FC<AdvancedSearchModalProps> = ({
     setFilters({
       firstName: '',
       lastName: '',
-      phone: '',
       vidhansabhaNo: '',
       vibhaghKramank: '',
       paid: null
@@ -132,7 +131,7 @@ export const AdvancedSearchModal: React.FC<AdvancedSearchModalProps> = ({
             Payment Status
           </label>
           <select
-            value={filters.paid === null ? '' : filters.paid.toString()}
+            value={filters.paid === null || filters.paid === undefined ? '' : filters.paid.toString()}
             onChange={(e) => {
               const value = e.target.value;
               setFilters({ 

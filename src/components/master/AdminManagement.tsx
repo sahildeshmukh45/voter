@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../../contexts/DataContext';
-import { useLanguage } from '../../contexts/LanguageContext';
-import { useTheme } from '../../contexts/ThemeContext';
+
 import { useToast } from '../common/Toast';
 import { Table, Button, StatusBadge, Modal, Input, Card } from '../ui';
 import { adminsApi } from '../../services/api';
@@ -10,10 +9,8 @@ import { Plus, Edit, Trash2, Shield, ShieldOff, Crown, Eye } from 'lucide-react'
 
 const AdminManagement: React.FC = () => {
   const { administrators, deleteAdmin, blockAdmin, unblockAdmin } = useData();
-  const { t } = useLanguage();
-  const { isDark } = useTheme();
   const { showSuccess, showError } = useToast();
-  const [showAddModal, setShowAddModal] = useState(false);
+
   const [editingAdmin, setEditingAdmin] = useState<Administrator | null>(null);
   const [editPassword, setEditPassword] = useState('');
   const [newAdmin, setNewAdmin] = useState({
@@ -110,7 +107,7 @@ const AdminManagement: React.FC = () => {
             </Button>
 
           {/* Block/Unblock Button */}
-          {admin.status === 'ACTIVE' ? (
+          {admin.status === 'active' ? (
             <Button
               variant="warning"
               size="sm"
@@ -157,7 +154,7 @@ const AdminManagement: React.FC = () => {
           password: ''
         });
 
-        setShowAddModal(false);
+        // Admin created successfully
 
         // The DataContext will automatically update the administrators list
 

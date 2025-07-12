@@ -1,9 +1,10 @@
 import React from 'react';
 import { useData } from '../../contexts/DataContext';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { Card } from '../ui';
 import GoogleMap from '../maps/GoogleMap';
-import { Activity, TrendingUp, Users, DollarSign, BarChart3, MapPin, Database, Shield, Wifi, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Activity, TrendingUp, Users, DollarSign, BarChart3, MapPin, Database, Shield, Wifi } from 'lucide-react';
 
 const SystemOverview: React.FC = () => {
   const { users, agents, transactions } = useData();
@@ -11,13 +12,13 @@ const SystemOverview: React.FC = () => {
   const { t } = useLanguage();
 
   const stats = {
-    totalRevenue: users.filter(u => u.paid).reduce((sum, u) => sum + u.amount, 0),
+    totalRevenue: users.filter(u => u.paid).reduce((sum, u) => sum + (u.amount || 0), 0),
     totalUsers: users.length,
     paidUsers: users.filter(u => u.paid).length,
     activeAgents: agents.filter(a => a.status === 'active').length,
     totalTransactions: transactions.length,
     avgTransactionValue: transactions.length > 0 ?
-      users.filter(u => u.paid).reduce((sum, u) => sum + u.amount, 0) / transactions.length : 0
+      users.filter(u => u.paid).reduce((sum, u) => sum + (u.amount || 0), 0) / transactions.length : 0
   };
 
   // Prepare map markers for election officers
@@ -204,13 +205,13 @@ const SystemOverview: React.FC = () => {
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <div>
-                      <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>{transaction.user}</div>
-                      <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>by {transaction.agent} • {transaction.location}</div>
+                      <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>{transaction.user || `User ${transaction.userId}`}</div>
+                      <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>by {transaction.agent || transaction.agentId} • {transaction.location}</div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-semibold text-green-600 dark:text-green-400">{transaction.amount}</div>
-                    <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{transaction.timestamp}</div>
+                    <div className="font-semibold text-green-600 dark:text-green-400">₹{transaction.amount}</div>
+                    <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{transaction.timestamp || new Date(transaction.createdAt).toLocaleString()}</div>
                   </div>
                 </div>
               ))}

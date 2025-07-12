@@ -1,6 +1,6 @@
 // API Configuration and Service Layer for Spring Boot Backend Integration
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:8383/api';
 
 // API Response wrapper type
 interface ApiResponse<T> {
@@ -517,7 +517,7 @@ export class LocationWebSocket {
       return;
     }
 
-    const wsUrl = `ws://localhost:8080/api/ws?token=${token}`;
+    const wsUrl = `ws://localhost:8383/api/ws?token=${token}`;
     this.ws = new WebSocket(wsUrl);
 
     this.ws.onopen = () => {

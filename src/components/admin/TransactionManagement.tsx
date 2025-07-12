@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useData } from '../../contexts/DataContext';
 import { Table, Button, Card, Input } from '../ui';
-import { transactionsApi } from '../../services/api';
+
 import type { TableColumn, Transaction } from '../../types';
-import { Download, Search, Filter, Calendar, DollarSign, TrendingUp, Users } from 'lucide-react';
+import { Download, Search, Calendar, DollarSign, TrendingUp, Users } from 'lucide-react';
 
 const TransactionManagement: React.FC = () => {
   const { transactions } = useData();
@@ -83,7 +83,7 @@ const TransactionManagement: React.FC = () => {
   const handleExport = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8080/api/files/export/transactions?format=xlsx', {
+      const response = await fetch('http://localhost:8383/api/files/export/transactions?format=xlsx', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
         }
@@ -175,7 +175,7 @@ const TransactionManagement: React.FC = () => {
                 type="text"
                 placeholder="Search transactions..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(value) => setSearchQuery(value)}
                 className="pl-10"
               />
             </div>
@@ -200,7 +200,7 @@ const TransactionManagement: React.FC = () => {
             <Input
               type="date"
               value={dateFilter.start}
-              onChange={(e) => setDateFilter(prev => ({ ...prev, start: e.target.value }))}
+              onChange={(value) => setDateFilter(prev => ({ ...prev, start: value }))}
             />
           </div>
 
@@ -209,7 +209,7 @@ const TransactionManagement: React.FC = () => {
             <Input
               type="date"
               value={dateFilter.end}
-              onChange={(e) => setDateFilter(prev => ({ ...prev, end: e.target.value }))}
+              onChange={(value) => setDateFilter(prev => ({ ...prev, end: value }))}
             />
           </div>
         </div>

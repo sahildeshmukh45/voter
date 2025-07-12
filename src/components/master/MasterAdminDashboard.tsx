@@ -12,7 +12,6 @@ import UserAgentManagement from './UserAgentManagement';
 import SystemSettings from './SystemSettings';
 import SecurityLogs from './SecurityLogs';
 import {
-  Crown,
   BarChart3,
   Shield,
   Users,
@@ -25,8 +24,6 @@ import {
   UserCheck,
   Sun,
   Moon,
-  Menu,
-  X,
   Vote
 } from 'lucide-react';
 
@@ -35,14 +32,13 @@ type MasterTab = 'overview' | 'admins' | 'system' | 'users-agents' | 'settings' 
 const MasterAdminDashboard: React.FC = () => {
   const { user, logout } = useAuth();
   const { users, agents, administrators, transactions } = useData();
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<MasterTab>('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Calculate enhanced stats
-  const paidUsers = users.filter(u => u.paid).length;
-  const totalAmount = users.filter(u => u.paid).reduce((sum, u) => sum + u.amount, 0);
+  const totalAmount = users.filter(u => u.paid).reduce((sum, u) => sum + (u.amount || 0), 0);
   const activeAgents = agents.filter(a => a.status === 'active').length;
   const activeAdmins = administrators.filter(a => a.status === 'active').length;
 

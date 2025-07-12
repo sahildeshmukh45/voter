@@ -1,6 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 
+// Simple Google Maps type declarations
+declare global {
+  namespace google {
+    namespace maps {
+      class Map {
+        constructor(element: HTMLElement, options: MapOptions);
+        fitBounds(bounds: any): void;
+      }
+      class Marker {
+        constructor(options: MarkerOptions);
+        setMap(map: Map | null): void;
+      }
+      interface MapOptions {
+        center: { lat: number; lng: number };
+        zoom: number;
+        styles?: any[];
+        mapTypeControl?: boolean;
+        streetViewControl?: boolean;
+        fullscreenControl?: boolean;
+        zoomControl?: boolean;
+        scaleControl?: boolean;
+        rotateControl?: boolean;
+        [key: string]: any; // Allow any additional properties
+      }
+      interface MarkerOptions {
+        position: { lat: number; lng: number };
+        map: Map;
+        title?: string;
+      }
+    }
+  }
+}
+
 interface MapMarker {
   id: string;
   lat: number;

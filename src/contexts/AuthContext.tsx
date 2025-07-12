@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const login = async (mobile: string, password: string, role: UserRole): Promise<{ success: boolean; error?: string }> => {
+  const login = async (mobile: string, password: string): Promise<{ success: boolean; error?: string }> => {
     try {
       setLoading(true);
       console.log('AuthContext: Starting login for mobile:', mobile);
@@ -89,8 +89,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const authUser: AuthUser = {
           username: response.data.username || mobile, // Backend might return mobile as username
           role: mapBackendRoleToFrontend(response.data.role),
-          name: response.data.firstName && response.data.lastName
-            ? `${response.data.firstName} ${response.data.lastName}`
+          name: (response.data as any).firstName && (response.data as any).lastName
+            ? `${(response.data as any).firstName} ${(response.data as any).lastName}`
             : response.data.username || mobile
         };
 
@@ -99,7 +99,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return { success: true };
       } else {
         console.log('AuthContext: Login failed, response:', response);
-        return { success: false, error: response.error || 'Invalid mobile number or password' };
+        return { success: false, error: (response as any).error || 'Invalid mobile number or password' };
       }
     } catch (error: any) {
       console.error('AuthContext: Login error:', error);

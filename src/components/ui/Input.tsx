@@ -1,8 +1,8 @@
 import React from 'react';
 
-interface InputProps {
+export interface InputProps {
   label?: string;
-  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'search';
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'search' | 'date';
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
@@ -11,6 +11,8 @@ interface InputProps {
   error?: string;
   icon?: React.ReactNode;
   className?: string;
+  min?: string;
+  max?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,7 +25,9 @@ const Input: React.FC<InputProps> = ({
   disabled = false,
   error,
   icon,
-  className = ''
+  className = '',
+  min,
+  max
 }) => {
   return (
     <div className={`space-y-2 ${className}`}>
@@ -50,6 +54,8 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           required={required}
           disabled={disabled}
+          min={min}
+          max={max}
           className={`
             block w-full rounded-lg border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500
             focus:ring-2 focus:ring-primary-500 focus:border-primary-500

@@ -26,6 +26,7 @@ export interface Agent {
   lat: number;
   lng: number;
   createdBy: string | null; // Sub-admin who created this agent
+  username?: string; // For backward compatibility
 }
 
 export interface Administrator {
@@ -50,6 +51,10 @@ export interface Transaction {
   longitude?: number;
   status: 'COMPLETED' | 'PENDING' | 'FAILED';
   createdAt: string;
+  // Legacy properties for backward compatibility
+  user?: string;
+  agent?: string;
+  timestamp?: string;
 }
 
 export interface LocationHistory {
@@ -73,6 +78,12 @@ export interface LoginLog {
 export interface SystemSettings {
   defaultPaymentAmount: number;
   sessionTimeout: number;
+  trackingInterval?: number;
+  offlineThreshold?: number;
+  maxFileSize?: number;
+  supportedFormats?: string[];
+  emailNotifications?: boolean;
+  autoBackup?: boolean;
 }
 
 export type UserRole = 'admin' | 'master';
@@ -85,7 +96,7 @@ export interface AuthUser {
 
 export interface AuthContextType {
   user: AuthUser | null;
-  login: (username: string, password: string, role: UserRole) => Promise<{ success: boolean; error?: string }>;
+  login: (username: string, password: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   changePassword: (oldPassword: string, newPassword: string) => Promise<boolean>;
   loading: boolean;
@@ -148,4 +159,19 @@ export interface TableProps<T> {
   searchable?: boolean;
   searchPlaceholder?: string;
   onSearch?: (query: string) => void;
+}
+
+export interface InputProps {
+  label?: string;
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'search' | 'date';
+  placeholder?: string;
+  value: string;
+  onChange: (value: string) => void;
+  required?: boolean;
+  disabled?: boolean;
+  error?: string;
+  icon?: React.ReactNode;
+  className?: string;
+  min?: string;
+  max?: string;
 }

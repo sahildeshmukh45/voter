@@ -9,8 +9,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   disabled = false,
   type = 'button',
-  className = '',
-  title
+  className = ''
 }) => {
   const { isDark } = useTheme();
   const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';

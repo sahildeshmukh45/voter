@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Menu, LogOut } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
 interface SidebarItem {
@@ -31,9 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   items,
   isOpen,
   onToggle,
-  className = '',
-  onLogout,
-  userInfo
+  className = ''
 }) => {
   const { isDark } = useTheme();
   return (
