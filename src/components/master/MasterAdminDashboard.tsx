@@ -7,15 +7,15 @@ import { Sidebar, Button } from '../ui';
 import LanguageSelector from '../ui/LanguageSelector';
 import StatsCard from '../admin/StatsCard';
 import AdminManagement from './AdminManagement';
-import SystemOverview from './SystemOverview';
+
 import UserAgentManagement from './UserAgentManagement';
-import SystemSettings from './SystemSettings';
+
 import SecurityLogs from './SecurityLogs';
 import {
   BarChart3,
   Shield,
   Users,
-  Settings,
+
   FileText,
   LogOut,
   DollarSign,
@@ -27,7 +27,7 @@ import {
   Vote
 } from 'lucide-react';
 
-type MasterTab = 'overview' | 'admins' | 'system' | 'users-agents' | 'settings' | 'security';
+type MasterTab = 'overview' | 'admins' | 'users-agents' | 'security';
 
 const MasterAdminDashboard: React.FC = () => {
   const { user, logout } = useAuth();
@@ -58,25 +58,11 @@ const MasterAdminDashboard: React.FC = () => {
       active: activeTab === 'admins'
     },
     {
-      id: 'system',
-      label: t.navigation.analytics,
-      icon: <Activity className="w-5 h-5" />,
-      onClick: () => setActiveTab('system'),
-      active: activeTab === 'system'
-    },
-    {
       id: 'users-agents',
       label: t.navigation.voterManagement,
       icon: <Users className="w-5 h-5" />,
       onClick: () => setActiveTab('users-agents'),
       active: activeTab === 'users-agents'
-    },
-    {
-      id: 'settings',
-      label: t.navigation.systemSettings,
-      icon: <Settings className="w-5 h-5" />,
-      onClick: () => setActiveTab('settings'),
-      active: activeTab === 'settings'
     },
     {
       id: 'security',
@@ -207,12 +193,8 @@ const MasterAdminDashboard: React.FC = () => {
         );
       case 'admins':
         return <AdminManagement />;
-      case 'system':
-        return <SystemOverview />;
       case 'users-agents':
         return <UserAgentManagement />;
-      case 'settings':
-        return <SystemSettings />;
       case 'security':
         return <SecurityLogs />;
       default:

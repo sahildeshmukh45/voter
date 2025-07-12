@@ -109,7 +109,7 @@ const UserAgentManagement: React.FC = () => {
         }
       });
 
-      const response = await fetch(`http://localhost:8383/api/users/search/advanced?${params.toString()}`, {
+      const response = await fetch(`http://localhost:8080/api/users/search/advanced?${params.toString()}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
         }

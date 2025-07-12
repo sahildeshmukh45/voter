@@ -174,7 +174,7 @@ const UserManagement: React.FC = () => {
   const downloadTemplate = async () => {
     try {
       // Call backend API to get Excel template
-      const response = await fetch('http://localhost:8383/api/files/template', {
+      const response = await fetch('http://localhost:8080/api/files/template', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
@@ -219,7 +219,7 @@ const UserManagement: React.FC = () => {
       // Call backend API to create voters
       for (const voter of sampleVoters) {
         try {
-          const response = await fetch('http://localhost:8383/api/users', {
+          const response = await fetch('http://localhost:8080/api/users', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

@@ -83,7 +83,7 @@ const TransactionManagement: React.FC = () => {
   const handleExport = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8383/api/files/export/transactions?format=xlsx', {
+      const response = await fetch('http://localhost:8080/api/files/export/transactions?format=xlsx', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('voter_admin_token')}`
         }

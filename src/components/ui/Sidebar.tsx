@@ -94,15 +94,15 @@ const Sidebar: React.FC<SidebarProps> = ({
                     ? 'bg-primary-900/50 text-primary-300 border-l-4 border-primary-400 font-semibold'
                     : 'bg-primary-50 text-primary-700 border-l-4 border-primary-600 font-semibold'
                   : isDark
-                    ? 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    ? 'text-white hover:bg-gray-700 hover:text-white'
+                    : 'text-white hover:bg-gray-700 hover:text-white'
                 }
               `}
             >
               <div className={`w-5 h-5 ${
                 item.active
                   ? isDark ? 'text-primary-400' : 'text-primary-600'
-                  : isDark ? 'text-gray-400' : 'text-gray-400'
+                  : 'text-white'
               }`}>
                 {item.icon}
               </div>
