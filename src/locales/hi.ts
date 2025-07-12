@@ -1,0 +1,213 @@
+import { TranslationKeys } from '../types/i18n';
+
+export const hiTranslations: TranslationKeys = {
+  appName: "मतदाता ऐप",
+  appDescription: "व्यापक मतदाता पंजीकरण प्रबंधन प्रणाली",
+  
+  common: {
+    login: "लॉगिन",
+    logout: "लॉगआउट",
+    welcome: "स्वागत",
+    loading: "लोड हो रहा है",
+    save: "सेव करें",
+    cancel: "रद्द करें",
+    delete: "हटाएं",
+    edit: "संपादित करें",
+    view: "देखें",
+    search: "खोजें",
+    filter: "फिल्टर",
+    refresh: "रीफ्रेश",
+    back: "वापस",
+    next: "अगला",
+    previous: "पिछला",
+    submit: "जमा करें",
+    close: "बंद करें",
+    confirm: "पुष्टि करें",
+    yes: "हाँ",
+    no: "नहीं",
+    active: "सक्रिय",
+    inactive: "निष्क्रिय",
+    blocked: "अवरुद्ध",
+    online: "ऑनलाइन",
+    offline: "ऑफलाइन",
+    connected: "जुड़ा हुआ",
+    running: "चल रहा है",
+    secure: "सुरक्षित",
+    total: "कुल",
+    today: "आज",
+    thisMonth: "इस महीने",
+    thisYear: "इस साल"
+  },
+
+  navigation: {
+    dashboard: "डैशबोर्ड",
+    overview: "अवलोकन",
+    systemOverview: "सिस्टम अवलोकन",
+    voterManagement: "मतदाता प्रबंधन",
+    electionOfficers: "चुनाव अधिकारी",
+    officerManagement: "अधिकारी प्रबंधन",
+    systemSettings: "सिस्टम सेटिंग्स",
+    securityLogs: "सुरक्षा और लॉग्स",
+    reports: "रिपोर्ट्स",
+    analytics: "विश्लेषण",
+    locationTracking: "स्थान ट्रैकिंग",
+    dataManagement: "डेटा प्रबंधन"
+  },
+
+  dashboard: {
+    title: "मतदाता पंजीकरण डैशबोर्ड",
+    subtitle: "व्यापक मतदाता पंजीकरण निरीक्षण और प्रबंधन",
+    masterAdminTitle: "मास्टर एडमिन डैशबोर्ड",
+    masterAdminSubtitle: "पूर्ण सिस्टम निरीक्षण और प्रशासन",
+    totalRevenue: "कुल राजस्व",
+    totalVoters: "कुल मतदाता",
+    registeredVoters: "पंजीकृत मतदाता",
+    pendingRegistrations: "लंबित पंजीकरण",
+    activeOfficers: "सक्रिय अधिकारी",
+    totalRegistrations: "कुल पंजीकरण",
+    registrationSuccessRate: "पंजीकरण सफलता दर",
+    systemUptime: "सिस्टम अपटाइम",
+    officerActivity: "अधिकारी गतिविधि"
+  },
+
+  voters: {
+    title: "मतदाता प्रबंधन",
+    totalVoters: "कुल मतदाता",
+    registeredVoters: "पंजीकृत मतदाता",
+    pendingRegistrations: "लंबित पंजीकरण",
+    voterDetails: "मतदाता विवरण",
+    voterId: "मतदाता आईडी",
+    firstName: "पहला नाम",
+    lastName: "अंतिम नाम",
+    address: "पता",
+    phone: "फोन",
+    registrationDate: "पंजीकरण तिथि",
+    registeredBy: "द्वारा पंजीकृत",
+    amount: "राशि",
+    status: "स्थिति",
+    registered: "पंजीकृत",
+    pending: "लंबित",
+    constituency: "निर्वाचन क्षेत्र",
+    pollingStation: "मतदान केंद्र"
+  },
+
+  officers: {
+    title: "चुनाव अधिकारी",
+    officerManagement: "अधिकारी प्रबंधन",
+    totalOfficers: "कुल अधिकारी",
+    activeOfficers: "सक्रिय अधिकारी",
+    officerId: "अधिकारी आईडी",
+    firstName: "पहला नाम",
+    lastName: "अंतिम नाम",
+    mobile: "मोबाइल",
+    username: "उपयोगकर्ता नाम",
+    password: "पासवर्ड",
+    status: "स्थिति",
+    lastLocation: "अंतिम स्थान",
+    registrationsToday: "आज के पंजीकरण",
+    totalRegistrations: "कुल पंजीकरण",
+    location: "स्थान",
+    pollingStation: "मतदान केंद्र",
+    constituency: "निर्वाचन क्षेत्र",
+    addOfficer: "अधिकारी जोड़ें",
+    editOfficer: "अधिकारी संपादित करें",
+    blockOfficer: "अधिकारी को ब्लॉक करें",
+    unblockOfficer: "अधिकारी को अनब्लॉक करें"
+  },
+
+  system: {
+    systemHealth: "सिस्टम स्वास्थ्य",
+    performanceMetrics: "प्रदर्शन मेट्रिक्स",
+    databaseStatus: "डेटाबेस स्थिति",
+    apiServices: "API सेवाएं",
+    paymentGateway: "पेमेंट गेटवे",
+    securityStatus: "सुरक्षा स्थिति",
+    systemAnalytics: "सिस्टम विश्लेषण",
+    recentActivity: "हाल की पंजीकरण गतिविधि",
+    officerLocations: "अधिकारी स्थान",
+    systemPerformance: "सिस्टम प्रदर्शन",
+    userStatistics: "उपयोगकर्ता आंकड़े",
+    registrationTimeline: "पंजीकरण समयरेखा",
+    noRegistrationsYet: "अभी तक कोई पंजीकरण दर्ज नहीं",
+    noTransactionsYet: "अभी तक कोई लेनदेन दर्ज नहीं",
+    recentTransactionActivity: "हाल की लेनदेन गतिविधि"
+  },
+
+  auth: {
+    loginTitle: "मतदाता ऐप लॉगिन",
+    loginSubtitle: "अपने मतदाता पंजीकरण प्रबंधन सिस्टम तक पहुंचें",
+    username: "उपयोगकर्ता नाम",
+    password: "पासवर्ड",
+    role: "भूमिका",
+    admin: "एडमिन",
+    masterAdmin: "मास्टर एडमिन",
+    supervisor: "पर्यवेक्षक",
+    electionOfficer: "चुनाव अधिकारी",
+    loginButton: "लॉगिन",
+    invalidCredentials: "अमान्य क्रेडेंशियल",
+    selectRole: "भूमिका चुनें"
+  },
+
+  settings: {
+    title: "सिस्टम सेटिंग्स",
+    language: "भाषा",
+    theme: "थीम",
+    lightMode: "लाइट मोड",
+    darkMode: "डार्क मोड",
+    defaultRegistrationAmount: "डिफ़ॉल्ट पंजीकरण राशि",
+    sessionTimeout: "सेशन टाइमआउट",
+    notifications: "सूचनाएं",
+    systemConfiguration: "सिस्टम कॉन्फ़िगरेशन"
+  },
+
+  time: {
+    minutes: "मिनट",
+    hours: "घंटे",
+    days: "दिन",
+    weeks: "सप्ताह",
+    months: "महीने",
+    years: "साल",
+    ago: "पहले",
+    now: "अभी"
+  },
+
+  messages: {
+    success: "सफलता",
+    error: "त्रुटि",
+    warning: "चेतावनी",
+    info: "जानकारी",
+    dataLoaded: "डेटा सफलतापूर्वक लोड हुआ",
+    dataSaved: "डेटा सफलतापूर्वक सेव हुआ",
+    dataDeleted: "डेटा सफलतापूर्वक हटाया गया",
+    noDataFound: "कोई डेटा नहीं मिला",
+    operationSuccessful: "ऑपरेशन सफलतापूर्वक पूरा हुआ",
+    operationFailed: "ऑपरेशन विफल"
+  },
+
+  dataManagement: {
+    title: "डेटा प्रबंधन",
+    subtitle: "सिस्टम डेटा, एक्सपोर्ट और सुरक्षा संचालन प्रबंधित करें",
+    dataExport: "डेटा एक्सपोर्ट",
+    exportUsers: "उपयोगकर्ता एक्सपोर्ट करें",
+    exportAgents: "एजेंट एक्सपोर्ट करें",
+    exportAllData: "सभी डेटा एक्सपोर्ट करें",
+    exportTransactions: "लेनदेन एक्सपोर्ट करें",
+    searchTransactions: "लेनदेन खोजें...",
+    transactionId: "लेनदेन आईडी",
+    user: "उपयोगकर्ता",
+    agent: "एजेंट",
+    amount: "राशि",
+    location: "स्थान",
+    timestamp: "समय",
+    noDataAvailable: "कोई डेटा उपलब्ध नहीं"
+  },
+
+  userManagement: {
+    title: "उपयोगकर्ता प्रबंधन",
+    userDatabase: "उपयोगकर्ता डेटाबेस",
+    agentDatabase: "एजेंट डेटाबेस",
+    searchUsers: "उपयोगकर्ता खोजें...",
+    searchOfficers: "अधिकारी खोजें...",
+    totalPayments: "कुल भुगतान"
+  }
+};

@@ -1,0 +1,213 @@
+import { TranslationKeys } from '../types/i18n';
+
+export const enTranslations: TranslationKeys = {
+  appName: "Voter App",
+  appDescription: "Comprehensive Voter Registration Management System",
+  
+  common: {
+    login: "Login",
+    logout: "Logout",
+    welcome: "Welcome",
+    loading: "Loading",
+    save: "Save",
+    cancel: "Cancel",
+    delete: "Delete",
+    edit: "Edit",
+    view: "View",
+    search: "Search",
+    filter: "Filter",
+    refresh: "Refresh",
+    back: "Back",
+    next: "Next",
+    previous: "Previous",
+    submit: "Submit",
+    close: "Close",
+    confirm: "Confirm",
+    yes: "Yes",
+    no: "No",
+    active: "Active",
+    inactive: "Inactive",
+    blocked: "Blocked",
+    online: "Online",
+    offline: "Offline",
+    connected: "Connected",
+    running: "Running",
+    secure: "Secure",
+    total: "Total",
+    today: "Today",
+    thisMonth: "This Month",
+    thisYear: "This Year"
+  },
+
+  navigation: {
+    dashboard: "Dashboard",
+    overview: "Overview",
+    systemOverview: "System Overview",
+    voterManagement: "Voter Management",
+    electionOfficers: "Election Officers",
+    officerManagement: "Officer Management",
+    systemSettings: "System Settings",
+    securityLogs: "Security & Logs",
+    reports: "Reports",
+    analytics: "Analytics",
+    locationTracking: "Location Tracking",
+    dataManagement: "Data Management"
+  },
+
+  dashboard: {
+    title: "Voter Registration Dashboard",
+    subtitle: "Comprehensive voter registration oversight and management",
+    masterAdminTitle: "Master Admin Dashboard",
+    masterAdminSubtitle: "Complete system oversight and administration",
+    totalRevenue: "Total Revenue",
+    totalVoters: "Total Voters",
+    registeredVoters: "Registered Voters",
+    pendingRegistrations: "Pending Registrations",
+    activeOfficers: "Active Officers",
+    totalRegistrations: "Total Registrations",
+    registrationSuccessRate: "Registration Success Rate",
+    systemUptime: "System Uptime",
+    officerActivity: "Officer Activity"
+  },
+
+  voters: {
+    title: "Voter Management",
+    totalVoters: "Total Voters",
+    registeredVoters: "Registered Voters",
+    pendingRegistrations: "Pending Registrations",
+    voterDetails: "Voter Details",
+    voterId: "Voter ID",
+    firstName: "First Name",
+    lastName: "Last Name",
+    address: "Address",
+    phone: "Phone",
+    registrationDate: "Registration Date",
+    registeredBy: "Registered By",
+    amount: "Amount",
+    status: "Status",
+    registered: "Registered",
+    pending: "Pending",
+    constituency: "Constituency",
+    pollingStation: "Polling Station"
+  },
+
+  officers: {
+    title: "Election Officers",
+    officerManagement: "Officer Management",
+    totalOfficers: "Total Officers",
+    activeOfficers: "Active Officers",
+    officerId: "Officer ID",
+    firstName: "First Name",
+    lastName: "Last Name",
+    mobile: "Mobile",
+    username: "Username",
+    password: "Password",
+    status: "Status",
+    lastLocation: "Last Location",
+    registrationsToday: "Registrations Today",
+    totalRegistrations: "Total Registrations",
+    location: "Location",
+    pollingStation: "Polling Station",
+    constituency: "Constituency",
+    addOfficer: "Add Officer",
+    editOfficer: "Edit Officer",
+    blockOfficer: "Block Officer",
+    unblockOfficer: "Unblock Officer"
+  },
+
+  system: {
+    systemHealth: "System Health",
+    performanceMetrics: "Performance Metrics",
+    databaseStatus: "Database Status",
+    apiServices: "API Services",
+    paymentGateway: "Payment Gateway",
+    securityStatus: "Security Status",
+    systemAnalytics: "System Analytics",
+    recentActivity: "Recent Registration Activity",
+    officerLocations: "Officer Locations",
+    systemPerformance: "System Performance",
+    userStatistics: "User Statistics",
+    registrationTimeline: "Registration Timeline",
+    noRegistrationsYet: "No registrations recorded yet",
+    noTransactionsYet: "No transactions recorded yet",
+    recentTransactionActivity: "Recent Transaction Activity"
+  },
+
+  auth: {
+    loginTitle: "Voter App Login",
+    loginSubtitle: "Access your voter registration management system",
+    username: "Username",
+    password: "Password",
+    role: "Role",
+    admin: "Admin",
+    masterAdmin: "Master Admin",
+    supervisor: "Supervisor",
+    electionOfficer: "Election Officer",
+    loginButton: "Login",
+    invalidCredentials: "Invalid credentials",
+    selectRole: "Select Role"
+  },
+
+  settings: {
+    title: "System Settings",
+    language: "Language",
+    theme: "Theme",
+    lightMode: "Light Mode",
+    darkMode: "Dark Mode",
+    defaultRegistrationAmount: "Default Registration Amount",
+    sessionTimeout: "Session Timeout",
+    notifications: "Notifications",
+    systemConfiguration: "System Configuration"
+  },
+
+  time: {
+    minutes: "minutes",
+    hours: "hours",
+    days: "days",
+    weeks: "weeks",
+    months: "months",
+    years: "years",
+    ago: "ago",
+    now: "now"
+  },
+
+  messages: {
+    success: "Success",
+    error: "Error",
+    warning: "Warning",
+    info: "Information",
+    dataLoaded: "Data loaded successfully",
+    dataSaved: "Data saved successfully",
+    dataDeleted: "Data deleted successfully",
+    noDataFound: "No data found",
+    operationSuccessful: "Operation completed successfully",
+    operationFailed: "Operation failed"
+  },
+
+  dataManagement: {
+    title: "Data Management",
+    subtitle: "Manage system data, exports, and security operations",
+    dataExport: "Data Export",
+    exportUsers: "Export Users",
+    exportAgents: "Export Agents",
+    exportAllData: "Export All Data",
+    exportTransactions: "Export Transactions",
+    searchTransactions: "Search transactions...",
+    transactionId: "Transaction ID",
+    user: "User",
+    agent: "Agent",
+    amount: "Amount",
+    location: "Location",
+    timestamp: "Timestamp",
+    noDataAvailable: "No data available"
+  },
+
+  userManagement: {
+    title: "User Management",
+    userDatabase: "User Database",
+    agentDatabase: "Agent Database",
+    searchUsers: "Search users...",
+    searchOfficers: "Search officers...",
+    totalPayments: "Total Payments"
+  }
+};

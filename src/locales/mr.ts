@@ -1,0 +1,213 @@
+import { TranslationKeys } from '../types/i18n';
+
+export const mrTranslations: TranslationKeys = {
+  appName: "मतदार नोंदणी व्यवस्थापन अॅप",
+  appDescription: "व्यापक मतदार नोंदणी व्यवस्थापन प्रणाली",
+  
+  common: {
+    login: "लॉगिन",
+    logout: "लॉगआउट",
+    welcome: "स्वागत",
+    loading: "लोड होत आहे",
+    save: "सेव्ह करा",
+    cancel: "रद्द करा",
+    delete: "हटवा",
+    edit: "संपादित करा",
+    view: "पहा",
+    search: "शोधा",
+    filter: "फिल्टर",
+    refresh: "रीफ्रेश",
+    back: "परत",
+    next: "पुढे",
+    previous: "मागे",
+    submit: "सबमिट करा",
+    close: "बंद करा",
+    confirm: "पुष्टी करा",
+    yes: "होय",
+    no: "नाही",
+    active: "सक्रिय",
+    inactive: "निष्क्रिय",
+    blocked: "ब्लॉक केलेले",
+    online: "ऑनलाइन",
+    offline: "ऑफलाइन",
+    connected: "जोडलेले",
+    running: "चालू आहे",
+    secure: "सुरक्षित",
+    total: "एकूण",
+    today: "आज",
+    thisMonth: "या महिन्यात",
+    thisYear: "या वर्षी"
+  },
+
+  navigation: {
+    dashboard: "डॅशबोर्ड",
+    overview: "विहंगावलोकन",
+    systemOverview: "सिस्टम विहंगावलोकन",
+    voterManagement: "मतदार व्यवस्थापन",
+    electionOfficers: "निवडणूक अधिकारी",
+    officerManagement: "अधिकारी व्यवस्थापन",
+    systemSettings: "सिस्टम सेटिंग्ज",
+    securityLogs: "सुरक्षा आणि लॉग्स",
+    reports: "अहवाल",
+    analytics: "विश्लेषण",
+    locationTracking: "स्थान ट्रॅकिंग",
+    dataManagement: "डेटा व्यवस्थापन"
+  },
+
+  dashboard: {
+    title: "मतदार नोंदणी डॅशबोर्ड",
+    subtitle: "व्यापक मतदार नोंदणी निरीक्षण आणि व्यवस्थापन",
+    masterAdminTitle: "मास्टर अॅडमिन डॅशबोर्ड",
+    masterAdminSubtitle: "संपूर्ण सिस्टम निरीक्षण आणि प्रशासन",
+    totalRevenue: "एकूण महसूल",
+    totalVoters: "एकूण मतदार",
+    registeredVoters: "नोंदणीकृत मतदार",
+    pendingRegistrations: "प्रलंबित नोंदणी",
+    activeOfficers: "सक्रिय अधिकारी",
+    totalRegistrations: "एकूण नोंदणी",
+    registrationSuccessRate: "नोंदणी यश दर",
+    systemUptime: "सिस्टम अपटाइम",
+    officerActivity: "अधिकारी क्रियाकलाप"
+  },
+
+  voters: {
+    title: "मतदार व्यवस्थापन",
+    totalVoters: "एकूण मतदार",
+    registeredVoters: "नोंदणीकृत मतदार",
+    pendingRegistrations: "प्रलंबित नोंदणी",
+    voterDetails: "मतदार तपशील",
+    voterId: "मतदार आयडी",
+    firstName: "पहिले नाव",
+    lastName: "आडनाव",
+    address: "पत्ता",
+    phone: "फोन",
+    registrationDate: "नोंदणी तारीख",
+    registeredBy: "नोंदणीकर्ता",
+    amount: "रक्कम",
+    status: "स्थिती",
+    registered: "नोंदणीकृत",
+    pending: "प्रलंबित",
+    constituency: "मतदारसंघ",
+    pollingStation: "मतदान केंद्र"
+  },
+
+  officers: {
+    title: "निवडणूक अधिकारी",
+    officerManagement: "अधिकारी व्यवस्थापन",
+    totalOfficers: "एकूण अधिकारी",
+    activeOfficers: "सक्रिय अधिकारी",
+    officerId: "अधिकारी आयडी",
+    firstName: "पहिले नाव",
+    lastName: "आडनाव",
+    mobile: "मोबाइल",
+    username: "वापरकर्ता नाव",
+    password: "पासवर्ड",
+    status: "स्थिती",
+    lastLocation: "शेवटचे स्थान",
+    registrationsToday: "आजच्या नोंदणी",
+    totalRegistrations: "एकूण नोंदणी",
+    location: "स्थान",
+    pollingStation: "मतदान केंद्र",
+    constituency: "मतदारसंघ",
+    addOfficer: "अधिकारी जोडा",
+    editOfficer: "अधिकारी संपादित करा",
+    blockOfficer: "अधिकारी ब्लॉक करा",
+    unblockOfficer: "अधिकारी अनब्लॉक करा"
+  },
+
+  system: {
+    systemHealth: "सिस्टम आरोग्य",
+    performanceMetrics: "कार्यप्रदर्शन मेट्रिक्स",
+    databaseStatus: "डेटाबेस स्थिती",
+    apiServices: "API सेवा",
+    paymentGateway: "पेमेंट गेटवे",
+    securityStatus: "सुरक्षा स्थिती",
+    systemAnalytics: "सिस्टम विश्लेषण",
+    recentActivity: "अलीकडील नोंदणी क्रियाकलाप",
+    officerLocations: "अधिकारी स्थाने",
+    systemPerformance: "सिस्टम कार्यप्रदर्शन",
+    userStatistics: "वापरकर्ता आकडेवारी",
+    registrationTimeline: "नोंदणी टाइमलाइन",
+    noRegistrationsYet: "अद्याप कोणत्याही नोंदणी नाहीत",
+    noTransactionsYet: "अद्याप कोणतेही व्यवहार नाहीत",
+    recentTransactionActivity: "अलीकडील व्यवहार क्रियाकलाप"
+  },
+
+  auth: {
+    loginTitle: "मतदार अॅप लॉगिन",
+    loginSubtitle: "तुमच्या मतदार नोंदणी व्यवस्थापन सिस्टममध्ये प्रवेश करा",
+    username: "वापरकर्ता नाव",
+    password: "पासवर्ड",
+    role: "भूमिका",
+    admin: "अॅडमिन",
+    masterAdmin: "मास्टर अॅडमिन",
+    supervisor: "पर्यवेक्षक",
+    electionOfficer: "निवडणूक अधिकारी",
+    loginButton: "लॉगिन",
+    invalidCredentials: "अवैध क्रेडेंशियल्स",
+    selectRole: "भूमिका निवडा"
+  },
+
+  settings: {
+    title: "सिस्टम सेटिंग्ज",
+    language: "भाषा",
+    theme: "थीम",
+    lightMode: "लाइट मोड",
+    darkMode: "डार्क मोड",
+    defaultRegistrationAmount: "डिफॉल्ट नोंदणी रक्कम",
+    sessionTimeout: "सेशन टाइमआउट",
+    notifications: "सूचना",
+    systemConfiguration: "सिस्टम कॉन्फिगरेशन"
+  },
+
+  time: {
+    minutes: "मिनिटे",
+    hours: "तास",
+    days: "दिवस",
+    weeks: "आठवडे",
+    months: "महिने",
+    years: "वर्षे",
+    ago: "आधी",
+    now: "आता"
+  },
+
+  messages: {
+    success: "यश",
+    error: "त्रुटी",
+    warning: "चेतावणी",
+    info: "माहिती",
+    dataLoaded: "डेटा यशस्वीरित्या लोड झाला",
+    dataSaved: "डेटा यशस्वीरित्या सेव्ह झाला",
+    dataDeleted: "डेटा यशस्वीरित्या हटवला",
+    noDataFound: "कोणताही डेटा सापडला नाही",
+    operationSuccessful: "ऑपरेशन यशस्वीरित्या पूर्ण झाले",
+    operationFailed: "ऑपरेशन अयशस्वी"
+  },
+
+  dataManagement: {
+    title: "डेटा व्यवस्थापन",
+    subtitle: "सिस्टम डेटा, एक्सपोर्ट आणि सुरक्षा ऑपरेशन व्यवस्थापित करा",
+    dataExport: "डेटा एक्सपोर्ट",
+    exportUsers: "वापरकर्ते एक्सपोर्ट करा",
+    exportAgents: "एजंट एक्सपोर्ट करा",
+    exportAllData: "सर्व डेटा एक्सपोर्ट करा",
+    exportTransactions: "व्यवहार एक्सपोर्ट करा",
+    searchTransactions: "व्यवहार शोधा...",
+    transactionId: "व्यवहार आयडी",
+    user: "वापरकर्ता",
+    agent: "एजंट",
+    amount: "रक्कम",
+    location: "स्थान",
+    timestamp: "वेळ",
+    noDataAvailable: "कोणताही डेटा उपलब्ध नाही"
+  },
+
+  userManagement: {
+    title: "वापरकर्ता व्यवस्थापन",
+    userDatabase: "वापरकर्ता डेटाबेस",
+    agentDatabase: "एजंट डेटाबेस",
+    searchUsers: "वापरकर्ते शोधा...",
+    searchOfficers: "अधिकारी शोधा...",
+    totalPayments: "एकूण पेमेंट"
+  }
+};
